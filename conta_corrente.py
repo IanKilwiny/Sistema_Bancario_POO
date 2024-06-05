@@ -29,15 +29,15 @@ class ContaCorrente(Conta):
     
     def depositar(self, valor: float) -> bool:
         hist_deposito = Deposito(valor)
-        self._historio.adicionar_transacao(hist_deposito)
-        return super().depositar(valor)
+        historico = self._historio.adicionar_transacao(hist_deposito)
+        self._saldo +=valor
     
-    # @property
-    # def contas(self):
-    #     return self._contas
     
-    # def criar_nova_conta(self,numero):
-    #     self._contas.append(
-    #         {"nome":self._nome,"numero":numero}
-    #     )
-    #     print("Conta criada")
+    def __str__(self):
+        return f"""
+        ############# CONTA ##############
+            Usuário:{self.cliente.nome}
+            Conta:{self.agencia+str(self.numero)}
+            Saldo:{self.saldo}
+        ##################################
+        """
