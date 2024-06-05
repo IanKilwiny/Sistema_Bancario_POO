@@ -54,7 +54,7 @@ def main():
 
     while True:
         print(menu())
-        opcao = int(input("Escolha uma das opcoes: "))
+        opcao = int(input("Escolha uma das opcões: "))
         match opcao:
             case 1:
                 valor = float(input("Digite o valor de saque: "))
