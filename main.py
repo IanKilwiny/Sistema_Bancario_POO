@@ -33,7 +33,7 @@ def depositar(valor, conta):
     return True
 
 def extrato(conta):
-    # print(conta.historico_transacao)
+   
     print("#############EXTRATO###############")
     for value in conta.historico_transacao:
         print("\n-------------------------")
@@ -65,16 +65,14 @@ def main():
                 resultado = depositar(valor, contas)
                 print("Sucesso no deposito" if resultado else "Error no depósito")
             case 3:      
-                # historico = contas.historico_transacao
-                # print(historico)
-                # print("Saldo:",contas.saldo)
+                
                 extrato(contas)
             case 4:
-                # nome = input("Digite o seu nome: ")
-                # cpf = input("Digite seu cpf: ")
-                # data_nasc= input("Digite sua data de nascimento: ")
-                # endereco = input("Digite seu endereço: ")
-                cliente = criar_cliente("Ian","12345","13/09/2004", "rua jose sá")
+                nome = input("Digite o seu nome: ")
+                cpf = input("Digite seu cpf: ")
+                data_nasc= input("Digite sua data de nascimento: ")
+                endereco = input("Digite seu endereço: ")
+                cliente = criar_cliente(nome, cpf, data_nasc, endereco)
                 print("Cliente criado")
                 
             case 5:
