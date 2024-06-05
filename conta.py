@@ -8,12 +8,7 @@ class Conta:
         self._agencia = "0001"
         self._cliente = cliente
         self._historio = Historico()
-        self._contas  = []
 
-        self._contas.append({
-            "nome":cliente.nome,
-            "numero":self._agencia+numero
-        })
     
     @property
     def saldo(self) -> float:
@@ -38,17 +33,4 @@ class Conta:
     @property
     def endereco(self):
         return self._endereco
-    
-    @property
-    def contas(self):
-        return self._contas
-
-     
-    def criar_nova_conta(self):
-        numero = int(self._numero)
-        numero+=1
-        self._contas.append({
-            "nome":self._cliente.nome,
-            "conta":self.agencia + str(numero)
-        })
-        print("Nova conta criada")
+   

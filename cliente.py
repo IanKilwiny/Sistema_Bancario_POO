@@ -22,7 +22,6 @@ class Cliente(Pessoa):
     def endereco(self):
         return self._endereco
     
-    def adicionar_conta(self,conta):
-        
-        pass
+    def __str__(self):
+        return f"{[f'{index}:{valor}' for index, valor in self.__dict__.items()]}"
 
