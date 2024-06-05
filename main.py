@@ -65,24 +65,16 @@ def main():
                 resultado = depositar(valor, contas)
                 print("Sucesso no deposito" if resultado else "Error no depósito")
             case 3:      
-<<<<<<< HEAD
-                
-=======
-        
->>>>>>> main
                 extrato(contas)
             case 4:
                 nome = input("Digite o seu nome: ")
                 cpf = input("Digite seu cpf: ")
                 data_nasc= input("Digite sua data de nascimento: ")
                 endereco = input("Digite seu endereço: ")
-<<<<<<< HEAD
+
                 cliente = criar_cliente(nome, cpf, data_nasc, endereco)
-=======
-                cliente = criar_cliente("Ian","12345","13/09/2004", "rua jose sá")
->>>>>>> main
                 print("Cliente criado")
-                
+
             case 5:
                 saldo = float(input("Digite o saldo dessa nova conta: "))
                 contas = criar_conta(num_contas, cliente, saldo)
