@@ -5,6 +5,8 @@ class Transacao(ABC):
     @abstractmethod
     def valor(self):
         pass
+
+    # @property
     # @abstractmethod
-    # def registrar(self,conta):
+    # def contador(self):
     #     pass

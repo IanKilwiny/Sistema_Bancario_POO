@@ -9,7 +9,8 @@ class Historico:
             {
                 "tipo":transacao.__class__.__name__,
                 "valor":transacao.valor,
-                "data":datetime.datetime.now().strftime("%d/%m/%y - %H:%M:%S")
+                "hora":datetime.datetime.now().strftime("%H:%M:%S"),
+                "data":datetime.datetime.now().strftime("%d/%m/%y")
             }
         )
         

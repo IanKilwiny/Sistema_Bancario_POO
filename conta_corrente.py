@@ -7,6 +7,7 @@ class ContaCorrente(Conta):
         super().__init__(numero, cliente, saldo)
         self._limite = 0
         self._num_saques = 0
+        self._num_depositos =0
        
     
     def sacar(self, valor: float) -> str:
@@ -29,6 +30,7 @@ class ContaCorrente(Conta):
     
     def depositar(self, valor: float) -> bool:
         hist_deposito = Deposito(valor)
+        self._num_depositos  += 1
         historico = self._historio.adicionar_transacao(hist_deposito)
         self._saldo +=valor
     
@@ -41,3 +43,4 @@ class ContaCorrente(Conta):
             Saldo:{self.saldo}
         ##################################
         """
+

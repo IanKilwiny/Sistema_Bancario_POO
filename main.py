@@ -1,8 +1,8 @@
 from cliente import Cliente
 from conta_corrente import ContaCorrente
+from datetime import datetime
 
 print("########## SISTEMA BANCARIO ##########")
-
 
 def menu():
     return """
@@ -32,17 +32,29 @@ def depositar(valor, conta):
 
     return True
 
+def filtro_transacao(conta, data_atual, num_transacoes, limite_transacao):
+    
+    if  num_transacoes == 0 or (conta.historico_transacao[0]["data"] == data_atual and num_transacoes<limite_transacao):
+        return True
+    
+    return False
+
+def num_transacoes(conta):
+    return len(conta.historico_transacao)
+
 def extrato(conta):
    
     print("#############EXTRATO###############")
     for value in conta.historico_transacao:
         print("\n-------------------------")
-        print("Tipo:",value["tipo"])
-        print("Valor:",value["valor"])
-        print("data-hora:",value["data"])
+        print("tipo:",value["tipo"])
+        print("valor:",value["valor"])
+        print("hora:",value["hora"])
+        print("data:",value["data"])
         print("\n------------------------")
 
     print("Saldo:",conta.saldo)
+    print("Número de transações:", num_transacoes(conta))
 
     print("####################################")
 
@@ -51,19 +63,30 @@ def main():
     contas = None
     opcao = 0
     num_contas =1
+    data_atual = datetime.now().strftime("%d/%m/%y")
+    LIMITE_TRANSACAO = 10
 
     while True:
         print(menu())
         opcao = int(input("Escolha uma das opcões: "))
         match opcao:
             case 1:
-                valor = float(input("Digite o valor de saque: "))
-                sacar(valor, contas)
-                #print(resultado)
+                
+                if filtro_transacao(contas, data_atual , num_transacoes(contas),LIMITE_TRANSACAO):
+                    valor = float(input("Digite o valor de saque: "))
+                    saque = sacar(valor, contas)
+                    print(saque)
+                    
+                else:
+                    print("Você atingiu o limite de transações diária")
+                
             case 2:
-                valor = float(input("Digite o valor de depósito"))
-                resultado = depositar(valor, contas)
-                print("Sucesso no deposito" if resultado else "Error no depósito")
+                if filtro_transacao(contas, data_atual, num_transacoes(contas), LIMITE_TRANSACAO):
+                    valor = float(input("Digite o valor de depósito: "))
+                    resultado = depositar(valor, contas)
+                    print("Sucesso no deposito" if resultado else "Error no depósito")
+                else:
+                    print("Você atingiu o limite de transacões possíveis")
             case 3:      
                 extrato(contas)
             case 4:
